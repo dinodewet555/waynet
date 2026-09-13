@@ -1,0 +1,294 @@
+---
+import { Phone, MapPin, Menu, X, ArrowRight, ShieldCheck } from '@lucide/astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, 'https://roxstarperformance.co.za').href;
+
+// Centralized JSON-LD Structured Data
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AutomotiveBusiness",
+  "name": "Roxstar Performance",
+  "telephone": "+27 82 572 3914",
+  "email": "info@roxstarperformance.co.za",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Cape Town",
+    "addressRegion": "Western Cape",
+    "addressCountry": "ZA"
+  },
+  "url": "https://roxstarperformance.co.za",
+  "logo": "https://roxstarperformance.co.za/images/logo.png",
+  "priceRange": "$$",
+  "foundingDate": "2007",
+  "description": "Premium motorcycle exhausts and high-performance parts distributor in South Africa since 2007. Official distributor for Dominator Exhausts.",
+  "areaServed": "South Africa"
+};
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-zinc-950 text-zinc-100">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO Meta Tags -->
+    <title>{title} | Roxstar Performance</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    
+    <!-- OpenGraph Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={`${title} | Roxstar Performance`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://roxstarperformance.co.za/images/hero-og.jpg" />
+    <meta property="og:site_name" content="Roxstar Performance" />
+    
+    <!-- Twitter Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} | Roxstar Performance`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://roxstarperformance.co.za/images/hero-og.jpg" />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- JSON-LD Injection -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body class="font-sans antialiased selection:bg-red-600 selection:text-white flex flex-col min-h-screen">
+    
+    <!-- Sticky Navigation Header -->
+    <header class="sticky top-0 z-50 w-full border-b border-zinc-900 bg-zinc-950/80 backdrop-blur-md transition-all duration-300">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-20 items-center justify-between">
+          
+          <!-- Logo -->
+          <a href="/" class="group flex items-center gap-2">
+            <span class="text-2xl font-extrabold tracking-wider text-zinc-100 group-hover:text-white transition-colors">
+              ROXSTAR<span class="text-red-500 group-hover:text-red-400 transition-colors">PERFORMANCE</span>
+            </span>
+          </a>
+          
+          <!-- Desktop Navigation -->
+          <nav class="hidden md:flex items-center gap-8">
+            <a href="/" class="text-sm font-medium text-zinc-300 hover:text-red-500 transition-colors py-2">Home</a>
+            <a href="/about" class="text-sm font-medium text-zinc-300 hover:text-red-500 transition-colors py-2">About</a>
+            <a href="/contact" class="text-sm font-medium text-zinc-300 hover:text-red-500 transition-colors py-2">Contact</a>
+          </nav>
+          
+          <!-- CTA Header Action -->
+          <div class="hidden md:flex items-center gap-4">
+            <a href="tel:0825723914" class="inline-flex items-center gap-2 rounded-full bg-zinc-900 border border-zinc-800 px-4 py-2 text-sm font-semibold text-zinc-200 hover:bg-zinc-800 hover:text-white transition-all">
+              <Phone class="w-4 h-4 text-red-500" />
+              <span>082 572 3914</span>
+            </a>
+            <a href="/contact" class="inline-flex items-center gap-1.5 rounded-full bg-red-600 px-5 py-2 text-sm font-bold text-white hover:bg-red-700 hover:shadow-lg hover:shadow-red-950/50 transition-all">
+              Request Quote <ArrowRight class="w-4 h-4" />
+            </a>
+          </div>
+          
+          <!-- Mobile Menu Button (Checkbox Hack) -->
+          <div class="flex md:hidden items-center">
+            <label for="mobile-menu-checkbox" class="cursor-pointer text-zinc-300 hover:text-red-500 p-2 select-none" aria-label="Toggle Menu">
+              <!-- Checkbox itself -->
+              <input type="checkbox" id="mobile-menu-checkbox" class="peer hidden" />
+              <!-- Menu Icon -->
+              <Menu class="w-6 h-6 peer-checked:hidden block" />
+              <!-- Close Icon -->
+              <X class="w-6 h-6 peer-checked:block hidden" />
+            </label>
+          </div>
+          
+        </div>
+      </div>
+      
+      <!-- Pure CSS Mobile Menu Container -->
+      <input type="checkbox" id="mobile-menu-toggle-input" class="peer hidden" />
+      <!-- Toggle Mobile Menu Visibility based on checkbox -->
+      <script is:inline>
+        document.addEventListener('DOMContentLoaded', () => {
+          const checkbox = document.getElementById('mobile-menu-checkbox');
+          const mobileMenu = document.getElementById('mobile-menu');
+          
+          checkbox.addEventListener('change', () => {
+            if (checkbox.checked) {
+              mobileMenu.classList.remove('hidden');
+              mobileMenu.classList.add('flex');
+            } else {
+              mobileMenu.classList.remove('flex');
+              mobileMenu.classList.add('hidden');
+            }
+          });
+        });
+      </script>
+      
+      <!-- Fallback pure CSS mechanism if browser script block is heavy -->
+      <style>
+        /* CSS hack to toggle menu if script is blocked (standard fallback) */
+        #mobile-menu-checkbox:checked ~ #mobile-menu {
+          display: flex !important;
+        }
+      </style>
+      
+      <!-- Mobile Menu Layout -->
+      <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-zinc-950 border-b border-zinc-900 flex-col px-4 pt-2 pb-6 gap-4 shadow-xl z-40">
+        <a href="/" class="text-base font-semibold text-zinc-200 hover:text-red-500 py-2 border-b border-zinc-900 transition-colors">Home</a>
+        <a href="/about" class="text-base font-semibold text-zinc-200 hover:text-red-500 py-2 border-b border-zinc-900 transition-colors">About</a>
+        <a href="/contact" class="text-base font-semibold text-zinc-200 hover:text-red-500 py-2 border-b border-zinc-900 transition-colors">Contact</a>
+        <div class="flex flex-col gap-3 pt-3">
+          <a href="tel:0825723914" class="flex items-center justify-center gap-2 rounded-xl bg-zinc-900 border border-zinc-800 py-3 text-base font-semibold text-zinc-200 hover:bg-zinc-800 transition-all">
+            <Phone class="w-5 h-5 text-red-500" />
+            <span>Call Expert: 082 572 3914</span>
+          </a>
+          <a href="/contact" class="flex items-center justify-center gap-2 rounded-xl bg-red-600 py-3 text-base font-bold text-white hover:bg-red-700 transition-all">
+            Request Quote <ArrowRight class="w-5 h-5" />
+          </a>
+        </div>
+      </div>
+      
+    </header>
+    
+    <!-- Main Content Area -->
+    <main class="flex-grow">
+      <slot />
+    </main>
+    
+    <!-- Rich Premium Footer -->
+    <footer class="bg-zinc-950 border-t border-zinc-900">
+      
+      <!-- Top Banner -->
+      <div class="bg-gradient-to-r from-red-950/20 via-zinc-900 to-red-950/20 border-b border-zinc-900">
+        <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="flex items-center gap-3">
+            <ShieldCheck class="w-8 h-8 text-red-500 shrink-0" />
+            <div>
+              <p class="font-bold text-zinc-100">Dominator Exhausts Official SA Distributor</p>
+              <p class="text-xs text-zinc-400">Includes 5-Year Unlimited Mileage Warranty & 304 Stainless Steel Construction</p>
+            </div>
+          </div>
+          <a href="tel:0825723914" class="inline-flex items-center gap-3 rounded-full bg-red-600 hover:bg-red-700 px-6 py-3 font-bold text-white text-sm tracking-wide shadow-lg shadow-red-950/40 transition-all uppercase">
+            <Phone class="w-4 h-4 animate-pulse" />
+            <span>Call Expert Advice: 082 572 3914</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          
+          <!-- Column 1: Company Profile -->
+          <div class="flex flex-col gap-4">
+            <span class="text-xl font-black tracking-wider text-zinc-100">
+              ROXSTAR<span class="text-red-500">PERFORMANCE</span>
+            </span>
+            <p class="text-sm text-zinc-400 leading-relaxed">
+              Leading the African motorcycle performance industry since 2007. Specializing in premium slip-on and full system exhausts to unlock raw power, cut weight, and refine sound.
+            </p>
+            <div class="text-xs text-zinc-500">
+              Est. 2007 • Over 15 Years of Leadership • 40+ Dealership Network
+            </div>
+          </div>
+          
+          <!-- Column 2: Navigation Links -->
+          <div>
+            <h3 class="text-sm font-bold uppercase tracking-wider text-zinc-100 mb-6">Quick Links</h3>
+            <ul class="space-y-3">
+              <li><a href="/" class="text-sm text-zinc-400 hover:text-red-500 transition-colors">Home Page</a></li>
+              <li><a href="/about" class="text-sm text-zinc-400 hover:text-red-500 transition-colors">About Roxstar</a></li>
+              <li><a href="/contact" class="text-sm text-zinc-400 hover:text-red-500 transition-colors">Contact & Support</a></li>
+              <li><a href="/contact#quote" class="text-sm text-zinc-400 hover:text-red-500 transition-colors">Request a Quote</a></li>
+            </ul>
+          </div>
+          
+          <!-- Column 3: Premium Brands -->
+          <div>
+            <h3 class="text-sm font-bold uppercase tracking-wider text-zinc-100 mb-6">Premium Brands</h3>
+            <div class="grid grid-cols-2 gap-2 text-sm text-zinc-400">
+              <span class="hover:text-zinc-200">Dominator SA</span>
+              <span class="hover:text-zinc-200">Vance & Hines</span>
+              <span class="hover:text-zinc-200">Scorpion</span>
+              <span class="hover:text-zinc-200">Brock's</span>
+              <span class="hover:text-zinc-200">Bassani</span>
+              <span class="hover:text-zinc-200">Cobra USA</span>
+              <span class="hover:text-zinc-200">Rinehart</span>
+              <span class="hover:text-zinc-200">S&S Cycle</span>
+              <span class="hover:text-zinc-200">K&N Filters</span>
+              <span class="hover:text-zinc-200">ThunderMax</span>
+            </div>
+          </div>
+          
+          <!-- Column 4: Contact & Distribution -->
+          <div>
+            <h3 class="text-sm font-bold uppercase tracking-wider text-zinc-100 mb-6">HQ Contact</h3>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <Phone class="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
+                <div>
+                  <a href="tel:0825723914" class="text-sm text-zinc-300 font-semibold hover:text-red-500">082 572 3914</a>
+                  <p class="text-xs text-zinc-500">Hassle-free expert advice</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <MapPin class="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
+                <div>
+                  <p class="text-sm text-zinc-300">Cape Town, South Africa</p>
+                  <p class="text-xs text-zinc-500">Nationwide & worldwide delivery</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+        </div>
+        
+        <!-- Bottom Section -->
+        <div class="mt-16 pt-8 border-t border-zinc-900 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p class="text-xs text-zinc-500 text-center md:text-left">
+            © {new Date().getFullYear()} Roxstar Performance. All rights reserved. Registered dealerships nationwide.
+          </p>
+          <p class="text-[10px] text-zinc-600 max-w-md text-center md:text-right leading-normal">
+            Disclaimer: Brand names like Vance & Hines, Scorpion, Brock's, and others are property of their respective owners. Roxstar Performance distributes products compatible with major manufacturers.
+          </p>
+        </div>
+      </div>
+    </footer>
+    
+  </body>
+</html>
+
+<style is:global>
+  /* Base Style Overrides & Scrollbar */
+  :root {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+  }
+  
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #09090b;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #27272a;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #dc2626;
+  }
+</style>

@@ -1,0 +1,209 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { 
+  History, 
+  ShieldCheck, 
+  MapPin, 
+  Clock, 
+  CheckCircle,
+  TrendingUp,
+  Award,
+  ArrowRight
+} from '@lucide/astro';
+
+const manufacturers = [
+  { name: "Harley-Davidson", origin: "USA", type: "Cruiser / V-Twin" },
+  { name: "Suzuki", origin: "Japan", type: "Sport / Street" },
+  { name: "Yamaha", origin: "Japan", type: "Sport / Adventure" },
+  { name: "Kawasaki", origin: "Japan", type: "Sport / Cruiser" },
+  { name: "Honda", origin: "Japan", type: "Sport / Touring" },
+  { name: "Ducati", origin: "Italy", type: "Superbike / Naked" },
+  { name: "Indian", origin: "USA", type: "Premium Cruiser" },
+  { name: "KTM", origin: "Austria", type: "Off-Road / Naked" },
+  { name: "BMW Motorrad", origin: "Germany", type: "Touring / Adventure" },
+  { name: "Triumph", origin: "UK", type: "Modern Classic / Sport" }
+];
+---
+
+<Layout 
+  title="About Our Performance Legacy" 
+  description="Roxstar Performance has been leading the South African motorcycle exhaust industry since 2007. Over 40 registered dealerships nationwide."
+>
+  
+  <!-- About Hero Header -->
+  <section class="relative pt-32 pb-20 bg-zinc-950 overflow-hidden">
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#1f1f23_1px,transparent_1px),linear-gradient(to_bottom,#1f1f23_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-30"></div>
+    <div class="absolute top-0 right-1/4 w-[400px] h-[400px] rounded-full bg-red-600/5 blur-[100px] pointer-events-none"></div>
+    
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl sm:text-5xl font-black tracking-tight text-white uppercase">
+        About <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-amber-500">Roxstar Performance</span>
+      </h1>
+      <p class="mt-6 text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto leading-relaxed">
+        Building performance exhausts and distributing premium racing equipment across South Africa since 2007. Built by riders, for riders.
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 1: Our Story -->
+  <section class="py-20 bg-zinc-900/10 border-t border-zinc-900">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Column 1: Story Text -->
+        <div class="lg:col-span-7 flex flex-col gap-6">
+          <div class="inline-flex items-center gap-2 text-xs font-bold text-red-500 uppercase tracking-widest">
+            <History class="w-4 h-4" /> Our Legacy
+          </div>
+          <h2 class="text-3xl font-extrabold text-white tracking-tight">Over 15 Years of Performance Leadership</h2>
+          <p class="text-zinc-400 text-sm sm:text-base leading-relaxed">
+            Established in 2007, Roxstar Performance began with a simple, singular vision: to dismantle the long, multi-month dealership supply chain and provide South African riders with high-quality exhaust systems and tuning parts without the wait times.
+          </p>
+          <p class="text-zinc-400 text-sm sm:text-base leading-relaxed">
+            Over the last decade and a half, we have grown into one of the most trusted names in the African motorcycle industry. What started as a dedicated workshop operation in Cape Town has expanded into a comprehensive wholesale distribution network. Today, we partner with and supply **over 40 registered dealerships and workshops** across South Africa, bringing premium racing accessories straight to local riders.
+          </p>
+          
+          <div class="grid grid-cols-2 gap-6 mt-4">
+            <div class="border-l-2 border-red-500 pl-4">
+              <span class="text-xl font-bold text-white block">2007</span>
+              <span class="text-xs text-zinc-500">Company Founded in Cape Town</span>
+            </div>
+            <div class="border-l-2 border-red-500 pl-4">
+              <span class="text-xl font-bold text-white block">40+</span>
+              <span class="text-xs text-zinc-500">Registered Distribution Partners</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Column 2: Stats Display Card -->
+        <div class="lg:col-span-5 relative">
+          <div class="absolute inset-0 bg-gradient-to-r from-red-600/10 to-amber-500/10 blur-xl pointer-events-none"></div>
+          <div class="relative bg-zinc-950 border border-zinc-800 rounded-2xl p-8 flex flex-col gap-6">
+            <h3 class="text-lg font-bold text-white">The Distribution Footprint</h3>
+            <p class="text-xs text-zinc-400 leading-relaxed">
+              We coordinate logistics from our central repository in Cape Town to dealerships in Gauteng, KwaZulu-Natal, Eastern Cape, and beyond.
+            </p>
+            
+            <div class="space-y-4 border-t border-zinc-900 pt-6">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded bg-red-600/10 text-red-500 flex items-center justify-center font-bold text-xs shrink-0">SA</div>
+                <div class="text-xs">
+                  <p class="font-bold text-zinc-200">Nationwide Coverage</p>
+                  <p class="text-zinc-500">Cape Town HQ with regular daily dispatches.</p>
+                </div>
+              </div>
+              
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded bg-red-600/10 text-red-500 flex items-center justify-center font-bold text-xs shrink-0">W1</div>
+                <div class="text-xs">
+                  <p class="font-bold text-zinc-200">Direct Imports</p>
+                  <p class="text-zinc-500">Official distribution rights keep shipping fees clear.</p>
+                </div>
+              </div>
+              
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded bg-red-600/10 text-red-500 flex items-center justify-center font-bold text-xs shrink-0">DE</div>
+                <div class="text-xs">
+                  <p class="font-bold text-zinc-200">Authorised Dealerships</p>
+                  <p class="text-zinc-500">Roxstar hardware can be installed by 40+ certified fitment centers.</p>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: The Roxstar Promise -->
+  <section class="py-24 bg-zinc-950 border-t border-zinc-900">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 text-xs font-bold text-red-500 uppercase tracking-widest mb-4">
+          <Award class="w-4 h-4" /> Core Values
+        </div>
+        <h2 class="text-3xl font-extrabold text-white tracking-tight">The Roxstar Performance Promise</h2>
+        <p class="mt-4 text-zinc-400">Our philosophy is designed around the rider’s experience, stripping away the friction of acquiring international performance equipment.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Promise Card 1 -->
+        <div class="rounded-xl border border-zinc-900 bg-zinc-900/30 p-8 flex flex-col gap-5 hover:border-zinc-800 transition-colors">
+          <div class="w-12 h-12 rounded-xl bg-red-600/10 text-red-500 flex items-center justify-center shrink-0">
+            <ShieldCheck class="w-6 h-6" />
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-white mb-2">Absolute Peace of Mind</h3>
+            <p class="text-sm text-zinc-400 leading-relaxed">
+              We stand completely behind every component we sell. With guarantees like Dominator's 5-year unlimited mileage warranty, we ensure that your investment is fully protected against flaws and defects.
+            </p>
+          </div>
+        </div>
+
+        <!-- Promise Card 2 -->
+        <div class="rounded-xl border border-zinc-900 bg-zinc-900/30 p-8 flex flex-col gap-5 hover:border-zinc-800 transition-colors">
+          <div class="w-12 h-12 rounded-xl bg-red-600/10 text-red-500 flex items-center justify-center shrink-0">
+            <CheckCircle class="w-6 h-6" />
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-white mb-2">Completely Transparent</h3>
+            <p class="text-sm text-zinc-400 leading-relaxed">
+              We believe in honest, hassle-free pricing. No hidden import duties, customs surprise charges, or inflated freight costs. The price we quote is the final price you pay, delivery included.
+            </p>
+          </div>
+        </div>
+
+        <!-- Promise Card 3 -->
+        <div class="rounded-xl border border-zinc-900 bg-zinc-900/30 p-8 flex flex-col gap-5 hover:border-zinc-800 transition-colors">
+          <div class="w-12 h-12 rounded-xl bg-red-600/10 text-red-500 flex items-center justify-center shrink-0">
+            <Clock class="w-6 h-6" />
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-white mb-2">Disruptive Supply Chain</h3>
+            <p class="text-sm text-zinc-400 leading-relaxed">
+              Traditional supply lines force motorcycle riders to wait weeks or months for performance parts. By maintaining local inventory and utilizing air logistics, we bypass long delays to ship in days.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Supported Manufacturers Grid -->
+  <section class="py-24 bg-zinc-900/30 border-t border-zinc-900">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-3xl font-extrabold text-white tracking-tight">Supported Motorcycle Platforms</h2>
+        <p class="mt-4 text-zinc-400">Our performance exhausts and hardware are engineered to integrate seamlessly across these major global manufacturers.</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        {manufacturers.map((mfg) => (
+          <div class="group bg-zinc-950 border border-zinc-900 p-6 rounded-xl text-center hover:border-red-500/30 transition-all duration-300">
+            <h3 class="font-extrabold text-zinc-200 text-base group-hover:text-white transition-colors">{mfg.name}</h3>
+            <p class="text-[10px] text-zinc-500 uppercase tracking-widest font-semibold mt-1.5">{mfg.origin}</p>
+            <div class="mt-4 inline-flex px-2 py-0.5 rounded bg-zinc-900 text-[10px] text-red-500 font-bold border border-zinc-800">
+              {mfg.type}
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <div class="mt-16 text-center">
+        <p class="text-xs text-zinc-500 max-w-xl mx-auto">
+          Don't see your bike manufacturer listed? We regularly source specialized custom parts and performance solutions for unique boutique builds.
+        </p>
+        <a href="/contact" class="mt-6 inline-flex items-center gap-2 rounded-full bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 px-6 py-2.5 text-xs font-bold text-zinc-300 hover:text-white transition-all uppercase tracking-wider">
+          <span>Inquire About Your Model</span>
+          <ArrowRight class="w-3.5 h-3.5" />
+        </a>
+      </div>
+      
+    </div>
+  </section>
+
+</Layout>
